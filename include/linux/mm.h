@@ -587,6 +587,15 @@ static inline void set_page_links(struct page *page, enum zone_type zone,
 }
 
 /*
+ * Check a page is in lower zone
+ */
+extern int lowmem_zone;
+static inline bool is_lowmem_page(struct page *page)
+{
+	return page_zonenum(page) <= lowmem_zone;
+}
+
+/*
  * Some inline functions in vmstat.h depend on page_zone()
  */
 #include <linux/vmstat.h>
@@ -1190,7 +1199,7 @@ int write_one_page(struct page *page, int wait);
 void task_dirty_inc(struct task_struct *tsk);
 
 /* readahead.c */
-#define VM_MAX_READAHEAD   256 /* kbytes */
+#define VM_MAX_READAHEAD   512 /* kbytes */
 #define VM_MIN_READAHEAD     16 /* kbytes (includes current page) */
 
 extern unsigned long max_readahead_pages;

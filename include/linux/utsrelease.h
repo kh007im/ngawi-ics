@@ -1,1 +1,1 @@
-#define UTS_RELEASE "2.6.32.60-N64WI"
+#define UTS_RELEASE "2.6.32.60-N64WI_Just4Fun"
